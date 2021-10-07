@@ -28,5 +28,16 @@ precip_data_2018 = read_excel(trash_wheel_path, sheet = "2018 Precipitation", ra
   filter(total != "NA") %>%
   mutate(year = 2018)
 
-View(precip_data_2018)
+#View(precip_data_2018)
+```
+
+### Read and clean 2019 precipitation data
+
+``` r
+precip_data_2019 = read_excel(trash_wheel_path, sheet = "2019 Precipitation", range = "A2:B14") %>%
+  janitor::clean_names() %>%
+  filter(total != "NA") %>%
+  mutate(year = 2019)
+
+#View(precip_data_2019)
 ```
