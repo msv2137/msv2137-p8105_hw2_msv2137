@@ -1,0 +1,12 @@
+---
+title: "HW 2"
+author: Malvika Venkataraman
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(readxl)
+```
+
