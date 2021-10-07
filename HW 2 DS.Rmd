@@ -46,3 +46,13 @@ precip_data_2019 = read_excel(trash_wheel_path, sheet = "2019 Precipitation", ra
 
 #View(precip_data_2019)
 ```
+
+### Combine 2018 and 2019 datasets
+```{r}
+precip_data = bind_rows(precip_data_2018, precip_data_2019) %>%
+  mutate(month = month.name[month]) %>%
+  select(year, month, total)
+
+#View(precip_data)
+```
+
