@@ -198,3 +198,18 @@ knitr::kable(olivia_table_df, format = "html",
                "Table 1: Popularity Rank of 'Olivia' as a Female Baby Name Over Time")
 ```
 
+## Table: Most Popular Name Among Male Children
+```{r}
+pop_male_name_df =
+  filter(baby_name_df, gender == "male", rank == "1") %>%
+  select(year_of_birth, ethnicity, childs_first_name) %>%
+  pivot_wider(
+    names_from = "year_of_birth",
+    values_from = "childs_first_name"
+  )
+
+knitr::kable(pop_male_name_df, format = "html", 
+             caption = 
+               "Table 2: Most Popular Male Child Name of All Time")
+```
+

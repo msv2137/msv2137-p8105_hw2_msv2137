@@ -424,3 +424,144 @@ white non hispanic
 </tr>
 </tbody>
 </table>
+
+## Table: Most Popular Name Among Male Children
+
+``` r
+pop_male_name_df =
+  filter(baby_name_df, gender == "male", rank == "1") %>%
+  select(year_of_birth, ethnicity, childs_first_name) %>%
+  pivot_wider(
+    names_from = "year_of_birth",
+    values_from = "childs_first_name"
+  )
+
+knitr::kable(pop_male_name_df, format = "html", 
+             caption = 
+               "Table 2: Most Popular Male Child Name of All Time")
+```
+
+<table>
+<caption>
+Table 2: Most Popular Male Child Name of All Time
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+ethnicity
+</th>
+<th style="text-align:left;">
+2016
+</th>
+<th style="text-align:left;">
+2015
+</th>
+<th style="text-align:left;">
+2014
+</th>
+<th style="text-align:left;">
+2013
+</th>
+<th style="text-align:left;">
+2012
+</th>
+<th style="text-align:left;">
+2011
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+asian and pacific islander
+</td>
+<td style="text-align:left;">
+ethan
+</td>
+<td style="text-align:left;">
+jayden
+</td>
+<td style="text-align:left;">
+jayden
+</td>
+<td style="text-align:left;">
+jayden
+</td>
+<td style="text-align:left;">
+ryan
+</td>
+<td style="text-align:left;">
+ethan
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+black non hispanic
+</td>
+<td style="text-align:left;">
+noah
+</td>
+<td style="text-align:left;">
+noah
+</td>
+<td style="text-align:left;">
+ethan
+</td>
+<td style="text-align:left;">
+ethan
+</td>
+<td style="text-align:left;">
+jayden
+</td>
+<td style="text-align:left;">
+jayden
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hispanic
+</td>
+<td style="text-align:left;">
+liam
+</td>
+<td style="text-align:left;">
+liam
+</td>
+<td style="text-align:left;">
+liam
+</td>
+<td style="text-align:left;">
+jayden
+</td>
+<td style="text-align:left;">
+jayden
+</td>
+<td style="text-align:left;">
+jayden
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+white non hispanic
+</td>
+<td style="text-align:left;">
+joseph
+</td>
+<td style="text-align:left;">
+david
+</td>
+<td style="text-align:left;">
+joseph
+</td>
+<td style="text-align:left;">
+david
+</td>
+<td style="text-align:left;">
+joseph
+</td>
+<td style="text-align:left;">
+michael
+</td>
+</tr>
+</tbody>
+</table>
