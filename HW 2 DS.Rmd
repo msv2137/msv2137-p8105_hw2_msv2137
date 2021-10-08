@@ -140,3 +140,24 @@ fivethirtyeight_merged_data =
 ### Results
 
 *insert text here*
+
+# Problem 3
+
+## Load and tidy baby name dataset
+```{r}
+#load, read, view data
+baby_name_path = "./data/Popular_Baby_Names.csv"
+
+baby_name_df = read_csv(baby_name_path)
+
+#View(baby_name_df)
+```
+
+## Check for issues
+```{r}
+unique(baby_name_df[c("Year of Birth")]) #no issues
+unique(baby_name_df[c("Gender")]) #no issues
+unique(baby_name_df[c("Ethnicity")]) #issues
+
+```
+

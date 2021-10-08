@@ -176,3 +176,74 @@ fivethirtyeight_merged_data =
 #view completed dataset
 #View(fivethirtyeight_merged_data)
 ```
+
+### Results
+
+*insert text here*
+
+# Problem 3
+
+## Load and tidy baby name dataset
+
+``` r
+#load, read, view data
+baby_name_path = "./data/Popular_Baby_Names.csv"
+
+baby_name_df = read_csv(baby_name_path)
+```
+
+    ## Rows: 19418 Columns: 6
+
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (3): Gender, Ethnicity, Child's First Name
+    ## dbl (3): Year of Birth, Count, Rank
+
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+View(baby_name_df)
+```
+
+## Check for issues
+
+``` r
+unique(baby_name_df[c("Year of Birth")]) #no issues
+```
+
+    ## # A tibble: 6 × 1
+    ##   `Year of Birth`
+    ##             <dbl>
+    ## 1            2016
+    ## 2            2015
+    ## 3            2014
+    ## 4            2013
+    ## 5            2012
+    ## 6            2011
+
+``` r
+unique(baby_name_df[c("Gender")]) #no issues
+```
+
+    ## # A tibble: 2 × 1
+    ##   Gender
+    ##   <chr> 
+    ## 1 FEMALE
+    ## 2 MALE
+
+``` r
+unique(baby_name_df[c("Ethnicity")]) #issues
+```
+
+    ## # A tibble: 7 × 1
+    ##   Ethnicity                 
+    ##   <chr>                     
+    ## 1 ASIAN AND PACIFIC ISLANDER
+    ## 2 BLACK NON HISPANIC        
+    ## 3 HISPANIC                  
+    ## 4 WHITE NON HISPANIC        
+    ## 5 ASIAN AND PACI            
+    ## 6 BLACK NON HISP            
+    ## 7 WHITE NON HISP
