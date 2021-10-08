@@ -51,3 +51,37 @@ precip_data = bind_rows(precip_data_2018, precip_data_2019) %>%
 
 #View(precip_data)
 ```
+
+## Interpretation
+
+*insert here*
+
+# Problem 2
+
+## Read in the FiveThirtyEight Datasets and Clean
+
+### File Paths
+
+``` r
+pols_month_path = "./data/fivethirtyeight_datasets/pols-month.csv"
+unemployment_path = "./data/fivethirtyeight_datasets/unemployment.csv"
+snp_path = "./data/fivethirtyeight_datasets/snp.csv"
+```
+
+### Pols Month Dataset
+
+``` r
+#read and clean pols-month.csv
+party = c("dem","gop")
+
+pols_data =
+  read.csv(pols_month_path) %>%
+  janitor::clean_names() %>%
+  separate(mon, into = c("year","month","day")) %>%
+  mutate(month = month.name[as.integer(month)],
+         president = party[prez_gop + 1]) %>%
+  select(year, month, president, everything(), -day, -prez_dem, -prez_gop)
+
+#view completed dataset
+#View(pols_data)
+```
