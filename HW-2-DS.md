@@ -85,3 +85,39 @@ pols_data =
 #view completed dataset
 #View(pols_data)
 ```
+
+### SNP Dataset
+
+``` r
+#read and convert dates to full year to match the pols month and unemployment csv's
+snp_data <- read_csv(snp_path)
+```
+
+    ## Rows: 787 Columns: 2
+
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (1): date
+    ## dbl (1): close
+
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+dates <- snp_data$date
+dates <- as.Date(dates, "%m/%d/%y")
+dates <- as.Date(ifelse(dates > Sys.Date(), format(dates, "19%y-%m-%d"), format(dates)))
+snp_data[,"date"] <- dates 
+
+#clean snp.csv
+snp_data =
+  snp_data %>%
+  janitor::clean_names() %>%
+  separate(date, into = c("year","month","day")) %>%
+  mutate(month = month.name[as.integer(month)]) %>%
+  select(year, month, snp_index = close)
+
+#view completed dataset
+View(snp_data)
+```
