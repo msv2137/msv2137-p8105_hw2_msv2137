@@ -438,12 +438,12 @@ pop_male_name_df =
 
 knitr::kable(pop_male_name_df, format = "html", 
              caption = 
-               "Table 2: Most Popular Male Child Name of All Time")
+               "Table 2: All Time Most Popular Name Among Male Children")
 ```
 
 <table>
 <caption>
-Table 2: Most Popular Male Child Name of All Time
+Table 2: All Time Most Popular Name Among Male Children
 </caption>
 <thead>
 <tr>
@@ -565,3 +565,27 @@ michael
 </tr>
 </tbody>
 </table>
+
+## Scatterplot
+
+``` r
+name_popularity_plot_df = 
+  filter(
+    baby_name_df,
+    year_of_birth == "2016",
+    gender == "male",
+    ethnicity == "white non hispanic") %>%
+  select(rank, count)
+
+#plot
+ggplot(name_popularity_plot_df, aes(x = rank, y = count)) +
+  geom_point() +
+  labs(
+    title = 
+      "Plot of Name Popularity for White, Non-Hispanic, Male Children Born in 2016",
+    x = "Rank in Popularity of a Name",
+    y = "Number of Children With a Name"
+  )
+```
+
+![](HW-2-DS_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
