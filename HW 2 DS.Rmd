@@ -210,6 +210,6 @@ pop_male_name_df =
 
 knitr::kable(pop_male_name_df, format = "html", 
              caption = 
-               "Table 2: Most Popular Male Child Name of All Time")
+               "Table 2: All Time Most Popular Name Among Male Children")
 ```
 
