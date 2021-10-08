@@ -183,3 +183,18 @@ baby_name_df =
 #View(baby_name_df)
 ```
 
+## Table: Popularity of Name Olivia
+```{r}
+olivia_table_df =
+  filter(baby_name_df, gender == "female", childs_first_name == "olivia") %>%
+  select(year_of_birth, ethnicity, rank) %>%
+  pivot_wider(
+    names_from = "year_of_birth",
+    values_from = "rank"
+  )
+
+knitr::kable(olivia_table_df, format = "html", 
+             caption = 
+               "Table 1: Popularity Rank of 'Olivia' as a Female Baby Name Over Time")
+```
+

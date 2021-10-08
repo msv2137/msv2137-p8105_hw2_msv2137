@@ -283,3 +283,144 @@ baby_name_df =
 #view completed dataset
 #View(baby_name_df)
 ```
+
+## Table: Popularity of Name Olivia
+
+``` r
+olivia_table_df =
+  filter(baby_name_df, gender == "female", childs_first_name == "olivia") %>%
+  select(year_of_birth, ethnicity, rank) %>%
+  pivot_wider(
+    names_from = "year_of_birth",
+    values_from = "rank"
+  )
+
+knitr::kable(olivia_table_df, format = "html", 
+             caption = 
+               "Table 1: Popularity Rank of 'Olivia' as a Female Baby Name Over Time")
+```
+
+<table>
+<caption>
+Table 1: Popularity Rank of ‘Olivia’ as a Female Baby Name Over Time
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+ethnicity
+</th>
+<th style="text-align:right;">
+2016
+</th>
+<th style="text-align:right;">
+2015
+</th>
+<th style="text-align:right;">
+2014
+</th>
+<th style="text-align:right;">
+2013
+</th>
+<th style="text-align:right;">
+2012
+</th>
+<th style="text-align:right;">
+2011
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+asian and pacific islander
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+black non hispanic
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+hispanic
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+white non hispanic
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+</tbody>
+</table>
