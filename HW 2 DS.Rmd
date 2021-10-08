@@ -143,7 +143,7 @@ fivethirtyeight_merged_data =
 
 # Problem 3
 
-## Load and tidy baby name dataset
+## Load baby name dataset
 ```{r}
 #load, read, view data
 baby_name_path = "./data/Popular_Baby_Names.csv"
@@ -159,5 +159,27 @@ unique(baby_name_df[c("Year of Birth")]) #no issues
 unique(baby_name_df[c("Gender")]) #no issues
 unique(baby_name_df[c("Ethnicity")]) #issues
 
+```
+
+## Tidy the data
+```{r}
+baby_name_df =
+  read_csv(baby_name_path) %>%
+  janitor::clean_names() %>%
+  distinct() %>%
+  mutate(
+    gender = str_to_lower(gender),
+    ethnicity = str_to_lower(ethnicity),
+    childs_first_name = str_to_lower(childs_first_name),
+    ethnicity = replace(ethnicity, ethnicity == "asian and paci",
+                        "asian and pacific islander"),
+    ethnicity = replace(ethnicity, ethnicity == "black non hisp",
+                        "black non hispanic"),
+    ethnicity = replace(ethnicity, ethnicity == "white non hisp",
+                        "white non hispanic")
+    )
+
+#view completed dataset
+#View(baby_name_df)
 ```
 

@@ -183,7 +183,7 @@ fivethirtyeight_merged_data =
 
 # Problem 3
 
-## Load and tidy baby name dataset
+## Load baby name dataset
 
 ``` r
 #load, read, view data
@@ -204,7 +204,7 @@ baby_name_df = read_csv(baby_name_path)
     ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 
 ``` r
-View(baby_name_df)
+#View(baby_name_df)
 ```
 
 ## Check for issues
@@ -247,3 +247,39 @@ unique(baby_name_df[c("Ethnicity")]) #issues
     ## 5 ASIAN AND PACI            
     ## 6 BLACK NON HISP            
     ## 7 WHITE NON HISP
+
+## Tidy the data
+
+``` r
+baby_name_df =
+  read_csv(baby_name_path) %>%
+  janitor::clean_names() %>%
+  distinct() %>%
+  mutate(
+    gender = str_to_lower(gender),
+    ethnicity = str_to_lower(ethnicity),
+    childs_first_name = str_to_lower(childs_first_name),
+    ethnicity = replace(ethnicity, ethnicity == "asian and paci",
+                        "asian and pacific islander"),
+    ethnicity = replace(ethnicity, ethnicity == "black non hisp",
+                        "black non hispanic"),
+    ethnicity = replace(ethnicity, ethnicity == "white non hisp",
+                        "white non hispanic")
+    )
+```
+
+    ## Rows: 19418 Columns: 6
+
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (3): Gender, Ethnicity, Child's First Name
+    ## dbl (3): Year of Birth, Count, Rank
+
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+#view completed dataset
+#View(baby_name_df)
+```
