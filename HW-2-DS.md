@@ -75,13 +75,26 @@ snp_path = "./data/fivethirtyeight_datasets/snp.csv"
 party = c("dem","gop")
 
 pols_data =
-  read.csv(pols_month_path) %>%
+  read_csv(pols_month_path) %>%
   janitor::clean_names() %>%
   separate(mon, into = c("year","month","day")) %>%
   mutate(month = month.name[as.integer(month)],
          president = party[prez_gop + 1]) %>%
   select(year, month, president, everything(), -day, -prez_dem, -prez_gop)
+```
 
+    ## Rows: 822 Columns: 9
+
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## dbl  (8): prez_gop, gov_gop, sen_gop, rep_gop, prez_dem, gov_dem, sen_dem, r...
+    ## date (1): mon
+
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
 #view completed dataset
 #View(pols_data)
 ```
@@ -120,4 +133,34 @@ snp_data =
 
 #view completed dataset
 View(snp_data)
+```
+
+### Unemployment Dataset
+
+``` r
+#read and clean unemployment csv
+unemployment_data =
+  read_csv(unemployment_path) %>%
+  pivot_longer(
+    Jan:Dec,
+    names_to = "month",
+    values_to = "percentage") %>%
+  mutate(month = month.name[match(pull(.,month),month.abb)],
+         Year = as.character(Year)) %>%
+  select(year =  Year, month, unemployment_percentage = percentage) #change name to make it more clear
+```
+
+    ## Rows: 68 Columns: 13
+
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## dbl (13): Year, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec
+
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+#view completed dataset
+View(unemployment_data)
 ```

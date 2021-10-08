@@ -77,7 +77,7 @@ snp_path = "./data/fivethirtyeight_datasets/snp.csv"
 party = c("dem","gop")
 
 pols_data =
-  read.csv(pols_month_path) %>%
+  read_csv(pols_month_path) %>%
   janitor::clean_names() %>%
   separate(mon, into = c("year","month","day")) %>%
   mutate(month = month.name[as.integer(month)],
@@ -107,5 +107,22 @@ snp_data =
 
 #view completed dataset
 View(snp_data)
+```
+
+### Unemployment Dataset
+```{r}
+#read and clean unemployment csv
+unemployment_data =
+  read_csv(unemployment_path) %>%
+  pivot_longer(
+    Jan:Dec,
+    names_to = "month",
+    values_to = "percentage") %>%
+  mutate(month = month.name[match(pull(.,month),month.abb)],
+         Year = as.character(Year)) %>%
+  select(year =  Year, month, unemployment_percentage = percentage) #change name to make it more clear
+
+#view completed dataset
+#View(unemployment_data)
 ```
 
