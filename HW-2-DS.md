@@ -162,5 +162,17 @@ unemployment_data =
 
 ``` r
 #view completed dataset
-View(unemployment_data)
+#View(unemployment_data)
+```
+
+### Merge the Datasets
+
+``` r
+#merge
+fivethirtyeight_merged_data =
+  left_join(pols_data, snp_data, by = c("year","month")) %>%
+  left_join(unemployment_data, by = c("year","month"))
+
+#view completed dataset
+#View(fivethirtyeight_merged_data)
 ```
