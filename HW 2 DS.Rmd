@@ -14,9 +14,9 @@ library(readxl)
 
 ## Read in the Trash Wheel Dataset and Clean
 ```{r}
-trash_wheel_path = "./data/Trash-Wheel-Collection-Totals-8-6-19.xlsx"
+trash_wheel_path = "./data/Trash-Wheel-Collection-Totals-7-2020-2.xlsx"
 
-trash_wheel_df = read_excel(trash_wheel_path, sheet = "Mr. Trash Wheel", range = "A2:N408") %>%
+trash_wheel_df = read_excel(trash_wheel_path, sheet = "Mr. Trash Wheel", range = "A2:N534") %>%
   janitor::clean_names() %>%
   filter(dumpster != "NA") %>%
   mutate(sports_balls = as.integer(sports_balls))
@@ -58,7 +58,9 @@ precip_data = bind_rows(precip_data_2018, precip_data_2019) %>%
 
 ## Interpretation
 
-*insert here*
+In the Mr. Trash Wheel dataset, there are `r nrow(trash_wheel_df)` rows and `r ncol(trash_wheel_df)` columns. There are `r max((pull(trash_wheel_df, dumpster)))` observations between 5/16/14 and 1/4/21, for the seven categories of trash represented in the dataset. Key variables include the Weight of the trash (in tons), and the Volume (in cubic yards). The median number of sports balls in a dumpster in 2019 was `r median(pull(trash_wheel_df %>% filter(year == 2019), sports_balls))`.
+
+In the 2018 and 2019 Merged Precipitation dataset, there are `r nrow(precip_data)` rows and `r ncol(precip_data)` columns. There are `r nrow(precip_data)` observations between 1/2018 and 12/2019. Key variables include the month, year and the total precipitation, for each month. For the available data, the total precipitation in 2018 was `r sum(pull(precip_data_2018, total))`
 
 # Problem 2
 

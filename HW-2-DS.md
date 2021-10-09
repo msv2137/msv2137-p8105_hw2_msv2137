@@ -7,9 +7,9 @@ Malvika Venkataraman
 ## Read in the Trash Wheel Dataset and Clean
 
 ``` r
-trash_wheel_path = "./data/Trash-Wheel-Collection-Totals-8-6-19.xlsx"
+trash_wheel_path = "./data/Trash-Wheel-Collection-Totals-7-2020-2.xlsx"
 
-trash_wheel_df = read_excel(trash_wheel_path, sheet = "Mr. Trash Wheel", range = "A2:N408") %>%
+trash_wheel_df = read_excel(trash_wheel_path, sheet = "Mr. Trash Wheel", range = "A2:N534") %>%
   janitor::clean_names() %>%
   filter(dumpster != "NA") %>%
   mutate(sports_balls = as.integer(sports_balls))
@@ -53,6 +53,23 @@ precip_data = bind_rows(precip_data_2018, precip_data_2019) %>%
 ```
 
 ## Interpretation
+
+Write a paragraph about these data; you are encouraged to use inline R.
+Be sure to note the number of observations in both resulting datasets,
+and give examples of key variables. For available data, what was the
+total precipitation in 2018? What was the median number of sports balls
+in a dumpster in 2019?
+
+In the Mr. Trash Wheel dataset, there are 453 rows and 14 columns. There
+are 453 observations between 5/16/14 and 1/4/21, for the seven
+categories of trash represented in the dataset. Key variables include
+the Weight of the trash (in tons), and the Volume (in cubic yards). The
+median number of sports balls in a dumpster in 2019 was 9.
+
+In the 2018 and 2019 Merged Precipitation dataset, there are 24 rows and
+3 columns. There are 24 observations between 1/2018 and 12/2019. Key
+variables include the month, year and the total precipitation, for each
+month. For the available data, the total precipitation in 2018 was 70.33
 
 *insert here*
 
@@ -132,7 +149,7 @@ snp_data =
   select(year, month, snp_index = close)
 
 #view completed dataset
-View(snp_data)
+#View(snp_data)
 ```
 
 ### Unemployment Dataset
