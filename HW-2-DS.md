@@ -54,12 +54,6 @@ precip_data = bind_rows(precip_data_2018, precip_data_2019) %>%
 
 ## Interpretation
 
-Write a paragraph about these data; you are encouraged to use inline R.
-Be sure to note the number of observations in both resulting datasets,
-and give examples of key variables. For available data, what was the
-total precipitation in 2018? What was the median number of sports balls
-in a dumpster in 2019?
-
 In the Mr. Trash Wheel dataset, there are 453 rows and 14 columns. There
 are 453 observations between 5/16/14 and 1/4/21, for the seven
 categories of trash represented in the dataset. Key variables include
@@ -70,8 +64,6 @@ In the 2018 and 2019 Merged Precipitation dataset, there are 24 rows and
 3 columns. There are 24 observations between 1/2018 and 12/2019. Key
 variables include the month, year and the total precipitation, for each
 month. For the available data, the total precipitation in 2018 was 70.33
-
-*insert here*
 
 # Problem 2
 
@@ -196,7 +188,30 @@ fivethirtyeight_merged_data =
 
 ### Results
 
-*insert text here*
+The `pols_data` has 822 rows and 9 columns. It indicates, for a specific
+year and month, whether the president was a republican (`gop`) or a
+democrat (`dem`). It also indicates the number of republican or
+democratic governors (`gov_gop`, `gov_dem`), as well as representatives
+(`rep_gop`, `rep_dem`). The range of years the dataset includes is 1947
+to 2015.
+
+The `snp_data` has 787 rows and 3 columns. It indicates the closing
+values of the S&P stock index at the beginning of a designated year and
+month. Key variables include the year, month and S&P index. The range of
+years the dataset includes is 2015 to 1950.
+
+The `unemployment_data` has 816 rows and 3 columns. It indicates, the
+unemployment percentage at the beginning of a designated year and month.
+Key variables include the year, month and unemployment percentage. The
+range of years the dataset includes is 1948 to 2015.
+
+The resulting dataset (`fivethirtyeight_merged_data`) has 822 rows and
+11 columns. The years in the dataset range from 1947 to 2015. Key
+variables include the year and the month. The resulting dataset provides
+information on the political party of the president, the number of
+republican or democratic governors, senators and representatives, the
+closing values of the S&P stock index, and the unemployment percentage
+for a specific year and month.
 
 # Problem 3
 
